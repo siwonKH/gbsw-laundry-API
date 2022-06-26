@@ -18,12 +18,11 @@ func main() {
 		EnableTrustedProxyCheck: true,
 	})
 
+	app.Use(logger.New())
 	app.Use(cors.New(cors.Config{
 		AllowOrigins: "localhost",
 		AllowHeaders: "Origin, Content-Type, Accept",
 	}))
-
-	app.Use(logger.New())
 
 	router.SetupRoutes(app)
 
